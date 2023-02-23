@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 400;
+}
+ul, ol, li {
+    list-style: none;
+}
+a {
+    color: #222;
+    text-decoration: none;
+}
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+input, select {
+    border: none;
+    outline: none;
+    background: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+  }
+/* reset */
+/* root */
+/* root */
+
+body{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.top{
+  box-sizing: border-box;
+  text-align: center;
+  padding: 2rem 0;
+}
+.top h1{margin-bottom: 2rem;}
+.score{
+  margin: 0.5rem 0;
+}
+
+.gameover{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+.gameover button{
+  width: 120px;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.board ul {
+  width: 250px;
+  margin: 0 auto;
+  border: 1px solid #333;
+}
+.board ul li {
+  width: 100%;
+  height: 25px;
+}
+.board ul li ul {
+  display: flex;
+}
+.board ul li ul li {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid #ccc;
+}
+
+.tree{background: #c98cbb;}
+.square{background: #fee77f;}
+.stick{background: #bae3f9;}
+.zBlock{background: #ed787d;}
+.zBlockReverse{background: #b4d788;}
+.sevenBlock{background: #f3a27f;}
+.sevenBlockReverse{background: #8197f2;}
