@@ -3,7 +3,11 @@ import Blocks from "./blocks.js";
 const playBoard = document.querySelector('.board > ul');
 const scoreDisplay = document.querySelector('.score');
 const gameoverText = document.querySelector('.gameover');
-const restart = document.querySelector('.gameover > button');
+const retry = document.querySelector('.gameover > button');
+const notice = document.querySelector('.notice');
+const start = document.querySelector('.notice > button');
+const pause = document.querySelector('.pause');
+const restart = document.querySelector('.pause > button');
 
 const gameRow = 20;
 const gameCols = 10;
@@ -20,7 +24,10 @@ const movingItem = {
     left: 3
 };
 
-init();
+start.addEventListener('click',()=>{
+    notice.style.display = 'none';
+    init();
+})
 
 function init() {
     tempMovingItem = { ...movingItem };
@@ -84,7 +91,7 @@ function seizeBlock() {
     checkMatch();
 }
 function checkMatch(){
-    
+    let matchLine = 0;
     const childNodes = playBoard.childNodes;
     childNodes.forEach(child =>{
         let matched =true;
@@ -94,10 +101,10 @@ function checkMatch(){
             }
         })
         if(matched){
+            matchLine++
             child.remove();
             prependBox();
-            score++;
-            scoreDisplay.innerText = score*100;
+            scoreToLevel(matchLine);
         }
     })
 
@@ -120,6 +127,24 @@ function makeNewBlock(){
     tempMovingItem = {...movingItem};
     renderBlocks();
 }
+function scoreToLevel(matchLine){
+    if(score%30 === 0){
+        duration = duration-50;
+        if(duration<=100){
+            duration = 100;
+        }
+        clearInterval(downInterval);
+        downInterval = setInterval(()=>{
+            moveBlock('top',1)
+        },duration)
+    }
+    if(matchLine == 4){
+        score++;
+        console.log('tetris!')
+    }
+    score++;
+    scoreDisplay.innerText = score*100;
+}
 function checkEmpty(target) {
     if (!target || target.classList.contains('seized')) {
         return false;
@@ -134,6 +159,19 @@ function chasngeDirection() {
     const direction = tempMovingItem.direction;
     direction === 3 ? tempMovingItem.direction = 0 : tempMovingItem.direction += 1;
     renderBlocks();
+}
+function blockDrop(){
+    clearInterval(downInterval);
+    downInterval = setInterval(()=>{
+        moveBlock('top',1)
+    },10)
+}
+function pauseGame(){
+    pause.style.display = 'flex';
+    clearInterval(downInterval);
+    downInterval = setInterval(()=>{
+        moveBlock('top',0)
+    },0)
 }
 function gameover(){
     gameoverText.style.display = 'flex';
@@ -151,15 +189,31 @@ document.addEventListener("keydown", e => {
             moveBlock('top', 1);
             break;
         case 38:
-            chasngeDirection()
+            chasngeDirection();
+            break;
+        case 32:
+            blockDrop();
+            break;
+        case 27:
+            pauseGame();
             break;
         default:
             break;
 
     }
 })
-restart.addEventListener('click',()=>{
+retry.addEventListener('click',()=>{
     playBoard.innerHTML = '';
+    score = 0;
+    duration = 500;
+    scoreDisplay.innerText = score;
     gameoverText.style.display = 'none';
     init();
+})
+restart.addEventListener('click',()=>{
+    pause.style.display = 'none';
+    clearInterval(downInterval);
+    downInterval = setInterval(()=>{
+        moveBlock('top',1)
+    },duration)
 })

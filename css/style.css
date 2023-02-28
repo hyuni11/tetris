@@ -44,16 +44,54 @@ body{
   height: 100vh;
   overflow: hidden;
 }
+.notice {
+  display: block;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.notice span{
+  line-height: 200%;
+}
+.notice button{
+  width: 120px;
+  padding: 1rem;
+  color: #fff;
+  background: #333;
+}
 .top{
   box-sizing: border-box;
   text-align: center;
-  padding: 2rem 0;
+  padding: 2rem 0 0.5rem 0; 
 }
-.top h1{margin-bottom: 2rem;}
+.top .title{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
 .score{
   margin: 0.5rem 0;
 }
 
+.pause{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+.pause button{
+  width: 150px;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fff;
+}
 .gameover{
   display: none;
   position: absolute;

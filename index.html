@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
+    <link rel="shortcut icon" href="/img/favicon/tetris.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/e828517a6e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,19 +20,41 @@
             <h1>GAME OVER</h1>
             <button type="button">RETRY?</button>
         </div>
+        <div class="pause">
+            <h1>Pause</h1>
+            <br>
+            <h1><i class="fa-3x fa-solid fa-pause"></i></h1>
+            <button type="button">RE-START</button>
+        </div>
         <div class="top">
-            <h1>Tetris</h1>
+            <div class="title">
+                <h1>Tetris</h1>
+            </div>
             <div class="score-zone">
                 <span>Your Score</span>
                 <h2 class="score">0</h2>
             </div>
         </div>
+        <div class="notice">
+            <h1>Key Guide</h1>
+            <br>
+            <br>
+            <span>
+                <i class="fa-solid fa-arrow-right"></i> = right <br>
+                <i class="fa-solid fa-arrow-left"></i> = left <br>
+                <i class="fa-solid fa-arrow-down"></i> = down <br>
+                <i class="fa-solid fa-arrow-up"></i> = shape change <br>
+                space = block drop <br>
+                ESC = pause
+            </span>
+            <br>
+            <br>
+            <button type="button">START</button>
+        </div>
         <div class="bottom">
-            <div class="hold box"></div>
             <div class="board">
                 <ul></ul>
             </div>
-            <div class="next box"></div>
         </div>
     </div>
 </body>
